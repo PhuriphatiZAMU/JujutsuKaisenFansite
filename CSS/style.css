@@ -1066,3 +1066,97 @@ p {
     max-height: 100%;
   }
 }
+
+/* -----------------------------
+   Responsive adjustments (mobile-first)
+   ----------------------------- */
+
+/* Container padding */
+.container {
+  padding-left: 12px;
+  padding-right: 12px;
+}
+
+/* Typography scale */
+.Welcome {
+  font-size: clamp(28px, 6vw, 50px);
+}
+.JujutsuInto, p {
+  font-size: clamp(14px, 3.2vw, 20px);
+}
+h2 {
+  font-size: clamp(20px, 4vw, 30px);
+}
+
+/* Navbar adjustments */
+nav {
+  padding: 0.75rem 1rem;
+}
+nav .logo img { height: 36px; }
+.menu-icon { width: 44px; height: 44px; }
+
+/* Ensure dropdown is full-width on very small screens */
+@media (max-width: 480px) {
+  .dropdown-menu {
+    right: 8px;
+    left: 8px;
+    top: 56px;
+    min-width: auto;
+    border-radius: 8px;
+    padding: 0;
+  }
+  .dropdown-menu a { padding: 12px 16px; }
+}
+
+/* Carousel responsive */
+.carousel-wrapper, .arc-carousel-wrapper {
+  width: 100%;
+  max-width: 980px;
+  margin-left: auto;
+  margin-right: auto;
+  padding: 0 8px;
+}
+.carousel-controls, .carousel, .arc-carousel-controls, .arc-carousel {
+  height: clamp(180px, 40vw, 500px);
+}
+.carousel-item, .arc-carousel .carousel-item {
+  height: auto;
+}
+.carousel-item img, .arc-carousel .carousel-item img {
+  width: 100%;
+  height: auto;
+  max-height: 65vh;
+  object-fit: cover;
+}
+
+/* Arc image row becomes grid on small screens */
+@media (max-width: 900px) {
+  .arc-img-row {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 16px;
+    height: auto;
+  }
+  .arc-img-link { height: auto; }
+  .arc-img-col { height: 260px; }
+}
+
+/* Character cards wrap */
+@media (max-width: 900px) {
+  .character-card-row {
+    flex-wrap: wrap;
+    gap: 18px;
+    justify-content: center;
+  }
+  .card { width: clamp(200px, 46%, 260px); }
+}
+
+/* Footer spacing */
+.footer-text { padding: 12px 0; }
+
+/* Improve general image responsiveness */
+img { max-width: 100%; height: auto; display: block; }
+
+/* Utilities: spacing helpers used in layouts */
+.mt-sm { margin-top: 8px !important; }
+.mb-sm { margin-bottom: 8px !important; }
