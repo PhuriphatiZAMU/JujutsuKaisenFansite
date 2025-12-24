@@ -147,7 +147,6 @@ function main() {
 
 document.addEventListener("DOMContentLoaded", function() {
     Promise.all([
-        loadTemplate('templates/header.html', 'header-placeholder'),
         loadTemplate('templates/nav.html', 'nav-placeholder'),
         loadTemplate('templates/footer.html', 'footer-placeholder')
     ]).then(main).catch(error => console.error("Error loading templates:", error));
