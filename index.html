@@ -3,48 +3,1161 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jujutsu Kaisen Fansite | Domain Expansion</title>
     <link rel="icon" type="image/x-icon" href="Photo/Logo/Jujutsu-Kaisen-Token.png">
-    
-    <!-- Bootstrap CSS -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
-    
-    <!-- jQuery CDN -->
-    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
 
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Prompt:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Prompt:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100&display=swap" rel="stylesheet">
 
-    <link rel="stylesheet" href="CSS/style.css">
-    <title>Jujutsu Kaisen Fansite</title>
+    <style>
+        /* --- 1. RESET & VARIABLES --- */
+        :root {
+            --primary-red: #C7383C;
+            --primary-red-glow: rgba(199, 56, 60, 0.6);
+            --dark-bg: #0f1118;
+            --card-bg: rgba(40, 45, 63, 0.7);
+            --glass-bg: rgba(20, 22, 30, 0.85);
+            --text-white: #ffffff;
+            --text-gray: #b0b3b8;
+            --gradient-text: linear-gradient(to bottom, #ffffff, #ff2c2c, rgb(89, 0, 3));
+            --font-main: 'Prompt', sans-serif;
+            --transition-speed: 0.3s;
+        }
+
+        *, *::before, *::after {
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            background-color: var(--dark-bg);
+            font-family: var(--font-main);
+            color: var(--text-white);
+            margin: 0;
+            padding: 0;
+            overflow-x: hidden;
+            line-height: 1.6;
+        }
+
+        /* Scrollbar styling */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: var(--dark-bg);
+        }
+        ::-webkit-scrollbar-thumb {
+            background: var(--primary-red);
+            border-radius: 4px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #a02023;
+        }
+
+        /* --- 2. LAYOUT & BACKGROUND --- */
+        .site-container {
+            position: relative;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .bg-layer {
+            position: fixed;
+            inset: 0;
+            z-index: -1;
+            background-color: var(--dark-bg);
+            background-image: url('https://images5.alphacoders.com/126/1262882.jpg'); /* Default BG */
+            background-size: cover;
+            background-position: center;
+            transition: background-image 0.8s ease-in-out;
+        }
+        
+        .bg-overlay {
+            position: fixed;
+            inset: 0;
+            z-index: -1;
+            background: radial-gradient(circle at center, transparent 0%, var(--dark-bg) 90%), rgba(0,0,0,0.6);
+            pointer-events: none;
+        }
+
+        /* --- 3. NAVIGATION (Glassmorphism) --- */
+        nav {
+            background: var(--glass-bg);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            padding: 0 2rem;
+            height: 70px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.5);
+        }
+
+        nav .logo {
+            display: flex;
+            align-items: center;
+            text-decoration: none;
+        }
+
+        nav .logo img {
+            height: 45px;
+            width: auto;
+            transition: transform var(--transition-speed);
+            filter: drop-shadow(0 0 5px var(--primary-red-glow));
+        }
+        nav .logo:hover img {
+            transform: scale(1.1) rotate(-5deg);
+        }
+
+        .desktop-menu {
+            display: flex;
+            list-style: none;
+            margin: 0;
+            padding: 0;
+            gap: 40px;
+        }
+
+        .desktop-menu li a {
+            color: var(--text-gray);
+            text-decoration: none;
+            font-size: 1.1rem;
+            font-weight: 500;
+            position: relative;
+            padding: 5px 0;
+            transition: color var(--transition-speed);
+        }
+
+        .desktop-menu li a::before {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: 0;
+            left: 50%;
+            background-color: var(--primary-red);
+            transition: all var(--transition-speed) ease;
+            box-shadow: 0 0 10px var(--primary-red);
+        }
+
+        .desktop-menu li a:hover, .desktop-menu li a.active {
+            color: var(--text-white);
+            text-shadow: 0 0 8px var(--primary-red);
+        }
+
+        .desktop-menu li a:hover::before, .desktop-menu li a.active::before {
+            width: 100%;
+            left: 0;
+        }
+
+        /* Mobile Hamburger */
+        .hamburger-container {
+            display: none;
+            cursor: pointer;
+            z-index: 1002;
+        }
+
+        .hamburger {
+            width: 30px;
+            height: 20px;
+            position: relative;
+        }
+
+        .hamburger span {
+            display: block;
+            position: absolute;
+            height: 3px;
+            width: 100%;
+            background: var(--text-white);
+            border-radius: 9px;
+            left: 0;
+            transition: .25s ease-in-out;
+        }
+
+        .hamburger span:nth-child(1) { top: 0px; }
+        .hamburger span:nth-child(2) { top: 9px; }
+        .hamburger span:nth-child(3) { top: 18px; }
+
+        .hamburger.open span:nth-child(1) { top: 9px; transform: rotate(135deg); background: var(--primary-red); }
+        .hamburger.open span:nth-child(2) { opacity: 0; left: -60px; }
+        .hamburger.open span:nth-child(3) { top: 9px; transform: rotate(-135deg); background: var(--primary-red); }
+
+        /* Mobile Menu Overlay */
+        .mobile-menu-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100vh;
+            background: rgba(0,0,0,0.95);
+            backdrop-filter: blur(10px);
+            z-index: 1001;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            transform: translateY(-100%);
+            transition: transform 0.4s cubic-bezier(0.77, 0, 0.175, 1);
+        }
+
+        .mobile-menu-overlay.active {
+            transform: translateY(0);
+        }
+
+        .mobile-menu-overlay a {
+            font-size: 2rem;
+            color: var(--text-white);
+            text-decoration: none;
+            margin: 20px 0;
+            font-weight: 700;
+            transition: color 0.3s;
+        }
+        .mobile-menu-overlay a:hover, .mobile-menu-overlay a.active {
+            color: var(--primary-red);
+        }
+
+        /* --- 4. SECTIONS & ANIMATIONS --- */
+        main {
+            flex: 1;
+            width: 100%;
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 2rem 20px;
+        }
+
+        section {
+            display: none; /* SPA Logic */
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.5s ease, transform 0.5s ease;
+        }
+
+        section.active {
+            display: block;
+        }
+
+        .fade-in {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+        }
+
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Typography */
+        .page-title {
+            font-size: clamp(2.5rem, 6vw, 4rem);
+            font-weight: 800;
+            text-align: center;
+            margin: 1rem 0 2rem;
+            background: var(--gradient-text);
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+            text-shadow: 0 4px 15px rgba(199, 56, 60, 0.3);
+            letter-spacing: -1px;
+            line-height: 1.1;
+        }
+
+        .page-intro {
+            font-size: clamp(1rem, 2vw, 1.2rem);
+            text-align: center;
+            max-width: 800px;
+            margin: 0 auto 3rem;
+            color: var(--text-gray);
+            font-weight: 300;
+        }
+
+        /* --- 5. CAROUSEL (Home) --- */
+        .carousel-wrapper {
+            position: relative;
+            width: 100%;
+            max-width: 1000px;
+            margin: 0 auto 4rem;
+            perspective: 1000px;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-start;
+            align-items: center;
+            gap: 30px;
+        }
+
+        #carousel-items-container {
+            position: relative;
+            width: 100%;
+            height: 500px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .carousel-item {
+            position: absolute;
+            width: 300px;
+            height: 450px;
+            transition: all 0.5s ease-in-out;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 15px 35px rgba(0,0,0,0.5);
+            opacity: 0.3;
+            z-index: 0;
+            cursor: pointer;
+            transform: scale(0.8);
+        }
+
+        .carousel-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .carousel-item.active {
+            opacity: 1;
+            z-index: 10;
+            transform: scale(1.1);
+            box-shadow: 0 0 30px var(--primary-red-glow);
+            border: 2px solid var(--primary-red);
+            filter: blur(0) grayscale(0%);
+        }
+
+        .carousel-item.prev {
+            opacity: 0.5;
+            z-index: 5;
+            transform: translateX(-220px) scale(0.85) rotateY(15deg);
+            filter: grayscale(80%);
+        }
+
+        .carousel-item.next {
+            opacity: 0.5;
+            z-index: 5;
+            transform: translateX(220px) scale(0.85) rotateY(-15deg);
+            filter: grayscale(80%);
+        }
+        
+        .carousel-controls {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            position: relative; 
+            z-index: 20;
+            margin-top: 20px;
+        }
+        
+        .dot {
+            width: 12px;
+            height: 12px;
+            background: rgba(255,255,255,0.2);
+            border-radius: 50%;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+        .dot.active {
+            background: var(--primary-red);
+            transform: scale(1.3);
+            box-shadow: 0 0 10px var(--primary-red);
+        }
+
+        /* --- 6. ARC GRID (Arc Hub) --- */
+        .arc-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            gap: 25px;
+        }
+
+        .arc-card {
+            position: relative;
+            /* Remove fixed aspect ratio that might clip content weirdly */
+            /* aspect-ratio: 2/3; */
+            height: 380px; 
+            border-radius: 15px;
+            overflow: hidden;
+            cursor: pointer;
+            transition: transform 0.4s ease, box-shadow 0.4s ease;
+            background: var(--card-bg);
+            border: 1px solid rgba(255,255,255,0.05);
+        }
+
+        .arc-card img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.6s ease;
+        }
+
+        .arc-card::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(to top, rgba(0,0,0,0.9), transparent 60%);
+            opacity: 0.8;
+            transition: opacity 0.3s;
+        }
+
+        .arc-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(199, 56, 60, 0.2);
+            border-color: var(--primary-red);
+        }
+
+        .arc-card:hover img {
+            transform: scale(1.1);
+        }
+
+        .arc-title {
+            position: absolute;
+            bottom: 20px;
+            left: 20px;
+            right: 20px;
+            z-index: 2;
+            color: white;
+            font-size: 1.2rem;
+            font-weight: 700;
+            text-align: center;
+            text-shadow: 0 2px 4px rgba(0,0,0,0.8);
+            transform: translateY(5px);
+            transition: transform 0.3s;
+        }
+        .arc-card:hover .arc-title {
+            transform: translateY(0);
+            color: var(--primary-red);
+        }
+
+        /* --- 7. CHARACTER FLIP CARDS --- */
+        .char-grid {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 30px;
+        }
+
+        .flip-card {
+            background-color: transparent;
+            width: 260px;
+            height: 380px;
+            perspective: 1000px;
+        }
+
+        .flip-card-inner {
+            position: relative;
+            width: 100%;
+            height: 100%;
+            text-align: center;
+            transition: transform 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            transform-style: preserve-3d;
+            border-radius: 15px;
+        }
+
+        .flip-card:hover .flip-card-inner {
+            transform: rotateY(180deg);
+        }
+
+        .flip-card-front, .flip-card-back {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            -webkit-backface-visibility: hidden;
+            backface-visibility: hidden;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.4);
+        }
+
+        .flip-card-front img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .flip-card-back {
+            background: linear-gradient(135deg, #1a0505 0%, #000000 100%);
+            color: white;
+            transform: rotateY(180deg);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+            border: 2px solid var(--primary-red);
+        }
+
+        .char-name {
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-bottom: 10px;
+            color: var(--primary-red);
+        }
+        
+        .char-desc {
+            font-size: 0.9rem;
+            color: #ddd;
+        }
+
+        /* --- 8. LINKS / WATCH BUTTONS --- */
+        .watch-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 15px;
+            margin: 40px auto;
+            max-width: 900px;
+            padding: 0 20px;
+        }
+
+        .btn-watch {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            padding: 10px 25px;
+            border-radius: 50px;
+            text-decoration: none;
+            color: white;
+            font-weight: 600;
+            background: var(--card-bg);
+            border: 2px solid transparent;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            position: relative;
+            overflow: hidden;
+            min-width: 140px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.2);
+        }
+
+        /* Platform specific colors */
+        .btn-netflix { border-color: #e50914; color: #fff; }
+        .btn-netflix:hover { background: #e50914; box-shadow: 0 0 20px rgba(229, 9, 20, 0.5); }
+
+        .btn-bilibili { border-color: #00aaff; color: #fff; }
+        .btn-bilibili:hover { background: #00aaff; box-shadow: 0 0 20px rgba(0, 170, 255, 0.5); }
+
+        .btn-prime { border-color: #00A8E1; color: #fff; }
+        .btn-prime:hover { background: #00A8E1; box-shadow: 0 0 20px rgba(0, 168, 225, 0.5); }
+
+        .btn-iqiyi { border-color: #00cc00; color: #fff; }
+        .btn-iqiyi:hover { background: #00cc00; box-shadow: 0 0 20px rgba(0, 204, 0, 0.5); }
+
+        .btn-mal { border-color: #2e51a2; color: #fff; }
+        .btn-mal:hover { background: #2e51a2; box-shadow: 0 0 20px rgba(46, 81, 162, 0.5); }
+
+        .btn-social {
+             /* General Social Style */
+             border-color: rgba(255,255,255,0.2);
+             background: rgba(255,255,255,0.05);
+        }
+        .btn-social:hover {
+            border-color: var(--primary-red);
+            background: var(--primary-red);
+            box-shadow: 0 0 20px var(--primary-red-glow);
+        }
+
+
+        /* --- 9. SUB-PAGES (Arc Details) --- */
+        .arc-detail-header {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin-bottom: 30px;
+            text-align: center;
+        }
+
+        .btn-back {
+            align-self: flex-start;
+            margin-bottom: 1rem;
+            background: transparent;
+            color: var(--primary-red);
+            border: 1px solid var(--primary-red);
+            padding: 8px 20px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s;
+            display: inline-flex;
+            align-items: center;
+            gap: 5px;
+        }
+        
+        .btn-back:hover {
+            background: var(--primary-red);
+            color: white;
+            padding-left: 25px; /* Arrow animation */
+        }
+
+        .scene-gallery {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); /* Slightly larger min size */
+            gap: 20px;
+            margin: 30px auto;
+            width: 100%;
+        }
+
+        .scene-img {
+            width: 100%;
+            height: 200px; /* Fixed height for consistency */
+            border-radius: 12px;
+            object-fit: cover;
+            transition: transform 0.3s;
+            cursor: pointer;
+            border: 1px solid rgba(255,255,255,0.1);
+            background-color: #1a1d29; /* Placeholder color */
+        }
+
+        .scene-img:hover {
+            transform: scale(1.05);
+            z-index: 2;
+            border-color: var(--primary-red);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.5);
+        }
+
+        /* Footer */
+        footer {
+            text-align: center;
+            padding: 30px;
+            background: rgba(0,0,0,0.8);
+            font-size: 0.85rem;
+            color: #666;
+            margin-top: auto;
+            border-top: 1px solid rgba(255,255,255,0.05);
+        }
+
+        /* Mobile adjustments */
+        @media (max-width: 768px) {
+            .desktop-menu { display: none; }
+            .hamburger-container { display: block; }
+            
+            #carousel-items-container { height: 400px; }
+            .carousel-item { width: 220px; height: 320px; }
+            .carousel-item.prev { transform: translateX(-100px) scale(0.85) rotateY(15deg); }
+            .carousel-item.next { transform: translateX(100px) scale(0.85) rotateY(-15deg); }
+            
+            .arc-card { height: auto; aspect-ratio: 2/3; }
+            .scene-gallery { grid-template-columns: 1fr; }
+            .scene-img { height: auto; aspect-ratio: 16/9; }
+        }
+    </style>
 </head>
 <body>
 
     <div class="site-container">
-        <div id="bg-layer" class="bg-layer"></div>
+        <!-- Background Layer -->
+        <div class="bg-layer" id="bg-layer"></div>
+        <div class="bg-overlay"></div>
 
-        <div id="nav-placeholder"></div>
+        <!-- Navigation -->
+        <nav>
+            <a href="#" class="logo" onclick="app.router.navigate('home')">
+                <img src="Photo/Logo/Jujutsu-Kaisen-Logo.png" alt="JJK Logo">
+            </a>
+
+            <!-- Desktop Menu -->
+            <ul class="desktop-menu">
+                <li><a href="#" onclick="app.router.navigate('home')" data-target="home">Home</a></li>
+                <li><a href="#" onclick="app.router.navigate('arc')" data-target="arc">Arc</a></li>
+                <li><a href="#" onclick="app.router.navigate('character')" data-target="character">Character</a></li>
+                <li><a href="#" onclick="app.router.navigate('contact')" data-target="contact">Contact</a></li>
+            </ul>
+
+            <!-- Mobile Hamburger -->
+            <div class="hamburger-container" onclick="app.toggleMobileMenu()">
+                <div class="hamburger" id="hamburger-icon">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+            </div>
+        </nav>
+
+        <!-- Mobile Menu Overlay -->
+        <div class="mobile-menu-overlay" id="mobile-menu">
+            <a href="#" onclick="app.router.navigate('home'); app.toggleMobileMenu()">Home</a>
+            <a href="#" onclick="app.router.navigate('arc'); app.toggleMobileMenu()">Arc</a>
+            <a href="#" onclick="app.router.navigate('character'); app.toggleMobileMenu()">Character</a>
+            <a href="#" onclick="app.router.navigate('contact'); app.toggleMobileMenu()">Contact</a>
+        </div>
 
         <!-- MAIN CONTENT AREA -->
-        <main id="app">
+        <main id="main-content">
+            
             <!-- SECTION: HOME -->
-            <section id="home" class="view-section active">
-                <h1 class="Welcome">Welcome to the Jujutsu Kaisen Fansite</h1>
-                <p class="JujutsuInto">
-                    Welcome to the Jujutsu Kaisen Fansite, created by the fans, for the fans, and is dedicated to housing everything about Jujutsu Kaisen created by Gege Akutami. Our goal is to become the best source of information on the series. Whether you're a long-time fan or new to the world of Jujutsu Kaisen, we hope you find our site informative and engaging. Dive into the world of curses, sorcerers, and epic battles as we explore the rich lore and captivating characters of Jujutsu Kaisen together!
+            <section id="home" class="active">
+                <h1 class="page-title fade-in">Welcome to Jujutsu Kaisen</h1>
+                <p class="page-intro fade-in">
+                    Created by fans, for fans. Dive into the world of curses, sorcerers, and epic battles.
                 </p>
-                <div class="carousel-wrapper">
-                    <div class="carousel-container" id="home-carousel"></div>
-                    <div class="carousel-dots" id="carousel-dots"></div>
+                
+                <div class="carousel-wrapper fade-in">
+                    <!-- Carousel Items will be injected by JS -->
+                    <div id="carousel-items-container"></div>
+                    <!-- Carousel Dots will be injected by JS -->
+                    <div class="carousel-controls" id="carousel-dots-container"></div>
                 </div>
             </section>
+
+            <!-- SECTION: ARC HUB -->
+            <section id="arc">
+                <h1 class="page-title fade-in">Story Arcs</h1>
+                <p class="page-intro fade-in">Explore the major events in the timeline.</p>
+                <div class="arc-grid">
+                    <div class="arc-card fade-in" onclick="app.router.navigate('arc0')">
+                        <img src="Photo/Arc/Arc-01.jpg" alt="Jujutsu Kaisen 0" loading="lazy">
+                        <div class="arc-title">Jujutsu Kaisen 0</div>
+                    </div>
+                    <div class="arc-card fade-in" onclick="app.router.navigate('arc1')">
+                        <img src="Photo/Arc/Arc-02.jpg" alt="Season 1" loading="lazy">
+                        <div class="arc-title">Season 1: Fearsome Womb</div>
+                    </div>
+                    <div class="arc-card fade-in" onclick="app.router.navigate('arc2')">
+                        <img src="Photo/Arc/Arc-03.jpg" alt="Hidden Inventory" loading="lazy">
+                        <div class="arc-title">Hidden Inventory</div>
+                    </div>
+                    <div class="arc-card fade-in" onclick="app.router.navigate('arc3')">
+                        <img src="Photo/Arc/Arc-04.jpg" alt="Shibuya Incident" loading="lazy">
+                        <div class="arc-title">Shibuya Incident</div>
+                    </div>
+                    <div class="arc-card fade-in" onclick="app.router.navigate('arc4')">
+                        <img src="Photo/Arc/Arc-05.jpg" alt="Culling Game" loading="lazy">
+                        <div class="arc-title">The Culling Game</div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- SUB-SECTIONS: ARC DETAILS -->
+            
+            <!-- Arc 0 -->
+            <section id="arc0">
+                <div class="arc-detail-header">
+                    <a href="#" class="btn-back" onclick="app.router.navigate('arc')">← Back to Arcs</a>
+                    <h1 class="page-title">Jujutsu Kaisen 0</h1>
+                    <p class="page-intro">Yuta Okkotsu, a cursed teen haunted by the vengeful spirit of his childhood friend Rika.</p>
+                </div>
+                <div class="scene-gallery">
+                    <img src="Photo/Arc/Arc-01-Sceane/Arc-01-Sceane-01.jpg" class="scene-img">
+                    <img src="Photo/Arc/Arc-01-Sceane/Arc-01-Sceane-02.jpg" class="scene-img">
+                    <img src="Photo/Arc/Arc-01-Sceane/Arc-01-Sceane-03.jpg" class="scene-img">
+                </div>
+                <div class="scene-gallery">
+                    <img src="Photo/Arc/Arc-01-Sceane/Arc-01-Sceane-04.jpg" class="scene-img">
+                    <img src="Photo/Arc/Arc-01-Sceane/Arc-01-Sceane-05.jpg" class="scene-img">
+                    <img src="Photo/Arc/Arc-01-Sceane/Arc-01-Sceane-06.jpg" class="scene-img">
+                </div>
+                <!-- Links restored -->
+                <div class="watch-container">
+                    <a href="https://www.netflix.com/th/title/81602834" target="_blank" class="btn-watch btn-netflix">Netflix</a>
+                    <a href="https://www.bilibili.tv/th/play/1067286" target="_blank" class="btn-watch btn-bilibili">Bilibili</a>
+                    <a href="https://www.primevideo.com/detail/0GTVYMIYD1GSB85O4H2JZWZJK0/" target="_blank" class="btn-watch btn-prime">Prime Video</a>
+                    <a href="https://myanimelist.net/anime/48561/Jujutsu_Kaisen_0_Movie" target="_blank" class="btn-watch btn-mal">MyAnimeList</a>
+                </div>
+            </section>
+
+            <!-- Arc 1 -->
+            <section id="arc1">
+                <div class="arc-detail-header">
+                    <a href="#" class="btn-back" onclick="app.router.navigate('arc')">← Back to Arcs</a>
+                    <h1 class="page-title">Season 1</h1>
+                    <p class="page-intro">Yuji Itadori joins Tokyo Jujutsu High to confront curses alongside sorcerers.</p>
+                </div>
+                <div class="scene-gallery">
+                    <img src="Photo/Arc/Arc-02-Sceane/Arc-02-Sceane-01.jpeg" class="scene-img">
+                    <img src="Photo/Arc/Arc-02-Sceane/Arc-02-Sceane-02.jpg" class="scene-img">
+                    <img src="Photo/Arc/Arc-02-Sceane/Arc-02-Sceane-03.jpeg" class="scene-img">
+                </div>
+                <div class="scene-gallery">
+                    <img src="Photo/Arc/Arc-02-Sceane/Arc-02-Sceane-04.jpg" class="scene-img">
+                    <img src="Photo/Arc/Arc-02-Sceane/Arc-02-Sceane-05.avif" class="scene-img">
+                    <img src="Photo/Arc/Arc-02-Sceane/Arc-02-Sceane-06.jpg" class="scene-img">
+                </div>
+                <!-- Links restored -->
+                <div class="watch-container">
+                    <a href="https://www.netflix.com/th/title/81278456" target="_blank" class="btn-watch btn-netflix">Netflix</a>
+                    <a href="https://www.bilibili.tv/play/37738" target="_blank" class="btn-watch btn-bilibili">Bilibili</a>
+                    <a href="https://www.iq.com/album/igc33vhvex" target="_blank" class="btn-watch btn-iqiyi">IQIYI</a>
+                    <a href="https://www.primevideo.com/detail/0SSDHA6FZCCH0Z7V4421F9ZBNZ/" target="_blank" class="btn-watch btn-prime">Prime Video</a>
+                </div>
+            </section>
+
+            <!-- Arc 2 -->
+            <section id="arc2">
+                <div class="arc-detail-header">
+                    <a href="#" class="btn-back" onclick="app.router.navigate('arc')">← Back to Arcs</a>
+                    <h1 class="page-title">Hidden Inventory</h1>
+                    <p class="page-intro">Young Satoru Gojo and Suguru Geto during their days at Jujutsu High.</p>
+                </div>
+                <div class="scene-gallery">
+                    <img src="Photo/Arc/Arc-03-Sceane/Arc-03-Sceane-01.jpg" class="scene-img">
+                    <img src="Photo/Arc/Arc-03-Sceane/Arc-03-Sceane-02.jpg" class="scene-img">
+                    <img src="Photo/Arc/Arc-03-Sceane/Arc-03-Sceane-03.png" class="scene-img">
+                </div>
+                <div class="scene-gallery">
+                    <img src="Photo/Arc/Arc-03-Sceane/Arc-03-Sceane-04.jpg" class="scene-img">
+                    <img src="Photo/Arc/Arc-03-Sceane/Arc-03-Sceane-05.jpg" class="scene-img">
+                    <img src="Photo/Arc/Arc-03-Sceane/Arc-03-Sceane-06.jpg" class="scene-img">
+
+                </div>
+                <!-- Links restored -->
+                <div class="watch-container">
+                    <a href="https://www.netflix.com/th/title/81278456" target="_blank" class="btn-watch btn-netflix">Netflix</a>
+                    <a href="https://www.bilibili.tv/th/play/2084055/12884443" target="_blank" class="btn-watch btn-bilibili">Bilibili</a>
+                    <a href="https://www.iq.com/album/1y1401doo65" target="_blank" class="btn-watch btn-iqiyi">IQIYI</a>
+                </div>
+            </section>
+
+            <!-- Arc 3 -->
+            <section id="arc3">
+                <div class="arc-detail-header">
+                    <a href="#" class="btn-back" onclick="app.router.navigate('arc')">← Back to Arcs</a>
+                    <h1 class="page-title">Shibuya Incident</h1>
+                    <p class="page-intro">The villainous plot to trap civilians in Shibuya on Halloween night unfolds.</p>
+                </div>
+                <div class="scene-gallery">
+                    <img src="Photo/Arc/Arc-04-Sceane/Arc-04-Sceane-01.jpg" class="scene-img">
+                    <img src="Photo/Arc/Arc-04-Sceane/Arc-04-Sceane-02.jpg" class="scene-img">
+                    <img src="Photo/Arc/Arc-04-Sceane/Arc-04-Sceane-03.jpg" class="scene-img">
+                </div>
+                <div class="scene-gallery"> 
+                    <img src="Photo/Arc/Arc-04-Sceane/Arc-04-Sceane-04.jpg" class="scene-img">
+                    <img src="Photo/Arc/Arc-04-Sceane/Arc-04-Sceane-05.jpg" class="scene-img">
+                    <img src="Photo/Arc/Arc-04-Sceane/Arc-04-Sceane-06.jpg" class="scene-img">
+                </div>
+                <!-- Links restored -->
+                <div class="watch-container">
+                    <a href="https://www.netflix.com/th/title/81278456" target="_blank" class="btn-watch btn-netflix">Netflix</a>
+                    <a href="https://www.bilibili.tv/th/play/2084055/12884915" target="_blank" class="btn-watch btn-bilibili">Bilibili</a>
+                </div>
+            </section>
+
+             <!-- Arc 4 -->
+             <section id="arc4">
+                <div class="arc-detail-header">
+                    <a href="#" class="btn-back" onclick="app.router.navigate('arc')">← Back to Arcs</a>
+                    <h1 class="page-title">The Culling Game</h1>
+                    <p class="page-intro">A deadly tournament organized by Kenjaku.</p>
+                </div>
+                <div class="scene-gallery">
+                    <img src="Photo/Arc/Arc-05-Sceane/Arc-05-Sceane-01.jpg" class="scene-img">
+                    <img src="Photo/Arc/Arc-05-Sceane/Arc-05-Sceane-02.jpg" class="scene-img">
+                    <img src="Photo/Arc/Arc-05-Sceane/Arc-05-Sceane-03.jpg" class="scene-img">
+                </div>
+                <div class="scene-gallery">
+                    <img src="Photo/Arc/Arc-05-Sceane/Arc-05-Sceane-04.jpg" class="scene-img">
+                    <img src="Photo/Arc/Arc-05-Sceane/Arc-05-Sceane-05.jpg" class="scene-img">
+                    <img src="Photo/Arc/Arc-05-Sceane/Arc-05-Sceane-06.jpg" class="scene-img">
+                </div>
+                <!-- Links restored -->
+                <div class="watch-container">
+                     <a href="https://myanimelist.net/anime/57658/Jujutsu_Kaisen_3rd_Season" target="_blank" class="btn-watch btn-mal">MyAnimeList</a>
+                </div>
+            </section>
+
+            <!-- SECTION: CHARACTER -->
+            <section id="character">
+                <h1 class="page-title fade-in">Characters</h1>
+                <p class="page-intro fade-in">Sorcerers of Tokyo Jujutsu High.</p>
+                <div class="char-grid">
+                    <!-- Char Items -->
+                    <div class="flip-card fade-in">
+                        <div class="flip-card-inner">
+                            <div class="flip-card-front"><img src="Photo/Character/Yuji-Itadori.webp" alt="Yuji" loading="lazy"></div>
+                            <div class="flip-card-back"><h2 class="char-name">Yuji Itadori</h2><p class="char-desc">Vessel of Sukuna.</p></div>
+                        </div>
+                    </div>
+                    <div class="flip-card fade-in">
+                        <div class="flip-card-inner">
+                            <div class="flip-card-front"><img src="Photo/Character/Satoru-Gojo.webp" alt="Gojo" loading="lazy"></div>
+                            <div class="flip-card-back"><h2 class="char-name">Satoru Gojo</h2><p class="char-desc">The Strongest.</p></div>
+                        </div>
+                    </div>
+                    <div class="flip-card fade-in">
+                        <div class="flip-card-inner">
+                            <div class="flip-card-front"><img src="Photo/Character/Megumi-Fushiguro.webp" alt="Megumi" loading="lazy"></div>
+                            <div class="flip-card-back"><h2 class="char-name">Megumi Fushiguro</h2><p class="char-desc">Ten Shadows User.</p></div>
+                        </div>
+                    </div>
+                    <div class="flip-card fade-in">
+                        <div class="flip-card-inner">
+                            <div class="flip-card-front"><img src="Photo/Character/Nobara-Kugisaki.webp" alt="Nobara" loading="lazy"></div>
+                            <div class="flip-card-back"><h2 class="char-name">Nobara Kugisaki</h2><p class="char-desc">Straw Doll Technique.</p></div>
+                        </div>
+                    </div>
+                    <div class="flip-card fade-in">
+                        <div class="flip-card-inner">
+                            <div class="flip-card-front"><img src="Photo/Character/Yuta-Okkotsu.webp" alt="Yuta" loading="lazy"></div>
+                            <div class="flip-card-back"><h2 class="char-name">Yuta Okkotsu</h2><p class="char-desc">Special Grade Sorcerer.</p></div>
+                        </div>
+                    </div>
+                    <div class="flip-card fade-in">
+                        <div class="flip-card-inner">
+                            <div class="flip-card-front"><img src="Photo/Character/Toge-Inumaki.webp" alt="Inumaki" loading="lazy"></div>
+                            <div class="flip-card-back"><h2 class="char-name">Toge Inumaki</h2><p class="char-desc">Cursed Speech.</p></div>
+                        </div>
+                    </div>
+                     <div class="flip-card fade-in">
+                        <div class="flip-card-inner">
+                            <div class="flip-card-front"><img src="Photo/Character/Maki-Zenin.webp" alt="Maki" loading="lazy"></div>
+                            <div class="flip-card-back"><h2 class="char-name">Maki Zenin</h2><p class="char-desc">Heavenly Restriction.</p></div>
+                        </div>
+                    </div>
+                     <div class="flip-card fade-in">
+                        <div class="flip-card-inner">
+                            <div class="flip-card-front"><img src="Photo/Character/Panda.webp" alt="Panda" loading="lazy"></div>
+                            <div class="flip-card-back"><h2 class="char-name">Panda</h2><p class="char-desc">Not a Panda.</p></div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- SECTION: CONTACT -->
+            <section id="contact">
+                <h1 class="page-title fade-in">Contact Me</h1>
+                <p class="page-intro fade-in">Connect with the creator.</p>
+                <div class="watch-container fade-in">
+                    <a href="mailto:phuriphathem@gmail.com" class="btn-watch btn-social">Email</a>
+                    <a href="https://www.facebook.com/phuriphat.hemakul/" target="_blank" class="btn-watch btn-social">Facebook</a>
+                    <a href="https://www.instagram.com/arm.phx/?__pwa=1" target="_blank" class="btn-watch btn-social">Instagram</a>
+                    <a href="https://github.com/PhuriphatiZAMU" target="_blank" class="btn-watch btn-social">GitHub</a>
+                </div>
+            </section>
+
         </main>
 
-        <div id="footer-placeholder"></div>
+        <footer>
+            <p>© 2025 Jujutsu Kaisen Fansite. Created with Cursed Energy.</p>
+        </footer>
     </div>
 
-    <!-- MAIN JS -->
-    <script src="js/script.js"></script>
+    <!-- JAVASCRIPT LOGIC -->
+    <script>
+        const app = {
+            state: {
+                currentSection: 'home',
+                carouselIndex: 0,
+                carouselTimer: null,
+                carouselData: [
+                    { id: 0, img: 'Photo/Kay-Visual/Jujutsu-Kaisen-0-Key-Visual.jpg', bg: 'https://images6.alphacoders.com/120/1200429.jpg' },
+                    { id: 1, img: 'Photo/Kay-Visual/Jujutsu-Kaisen-Kay-Visual.jpg', bg: 'https://images5.alphacoders.com/126/1262882.jpg' },
+                    { id: 2, img: 'Photo/Kay-Visual/Jujutsu-Kaisen-Hidden-Inventory-Premature-Death-Arc-Kay-Visual.webp', bg: 'https://wallpapercave.com/wp/wp12526882.jpg' },
+                    { id: 3, img: 'Photo/Kay-Visual/Jujutsu-Kaisen-Shibuya-Incident-Arc-Kay-Visual.webp', bg: 'https://external-preview.redd.it/jujutsu-kaisen-season-2-new-key-visual-revealed-for-shibuya-v0-uZxKhx5yBcH9sLn2Ng50x5Rlwvj0pR2edqD4nXv3nqg.jpg?auto=webp&s=19b8c5ddeb474a4a0d84729e921c4867a4101074' },
+                    { id: 4, img: 'Photo/Kay-Visual/Jujutsu-Kaisen-The-Culling-Game-Arc-Kay-Visual.jpeg', bg: 'https://cdn.oneesports.gg/cdn-data/2023/12/Anime_JujutsuKaisen_Season2_ClosingTheGate_Finale_Yuji.jpg' }
+                ]
+            },
+
+            init() {
+                this.router.init();
+                this.carousel.start();
+                this.animations.init();
+            },
+
+            toggleMobileMenu() {
+                const hamburger = document.getElementById('hamburger-icon');
+                const menu = document.getElementById('mobile-menu');
+                hamburger.classList.toggle('open');
+                menu.classList.toggle('active');
+            },
+
+            router: {
+                init() {
+                    // Handle initial load or back/forward buttons
+                    window.addEventListener('popstate', (event) => {
+                        const page = event.state ? event.state.page : 'home';
+                        this.show(page);
+                    });
+                    
+                    // Show initial page
+                    this.show('home');
+                },
+
+                navigate(pageId) {
+                    // Prevent default anchor behavior
+                    if (window.event) window.event.preventDefault();
+                    
+                    // Try to use pushState, but catch errors if running in a restricted environment (blob/iframe)
+                    try {
+                        history.pushState({ page: pageId }, null, `?page=${pageId}`);
+                    } catch (e) {
+                        console.log('Navigation fallback: History API restricted in this environment.');
+                    }
+                    this.show(pageId);
+                },
+
+                show(pageId) {
+                    // 1. Hide all sections
+                    document.querySelectorAll('section').forEach(sec => {
+                        sec.classList.remove('active');
+                        sec.style.display = 'none';
+                        sec.style.opacity = '0';
+                    });
+
+                    // 2. Show target section
+                    const target = document.getElementById(pageId);
+                    if (target) {
+                        target.style.display = 'block';
+                        // Small delay to allow display:block to apply before opacity transition
+                        setTimeout(() => {
+                            target.classList.add('active');
+                            target.style.opacity = '1';
+                            target.style.transform = 'translateY(0)';
+                            
+                            // Re-trigger animations for elements inside
+                            app.animations.observe(target);
+                            
+                            // Render carousel if this is the home page
+                            if (pageId === 'home' && !document.querySelector('.carousel-item')) {
+                                app.carousel.render();
+                            }
+                        }, 50);
+                    }
+
+                    // 3. Update Nav Active State
+                    document.querySelectorAll('.desktop-menu a, .mobile-menu-overlay a').forEach(link => {
+                        link.classList.remove('active');
+                        // Simple check to match data-target or logic
+                        if (link.getAttribute('onclick') && link.getAttribute('onclick').includes(pageId)) {
+                             // Only strictly active for main nav items
+                             if(pageId === 'home' || pageId === 'arc' || pageId === 'character' || pageId === 'contact') {
+                                 link.classList.add('active');
+                             }
+                        }
+                    });
+
+                    // 4. Update Background if needed (Specific logic for sub-pages or home)
+                    if (pageId === 'home') {
+                        app.carousel.updateBg(app.state.carouselIndex);
+                    } else {
+                         // Default BG for other pages or keep last one? Let's reset to a generic cool one or keep current
+                         // Optional: Set specific BG for Arcs
+                    }
+                    
+                    // Scroll to top
+                    window.scrollTo(0, 0);
+                }
+            },
+
+            carousel: {
+                render() {
+                    const container = document.getElementById('carousel-items-container');
+                    const dotsContainer = document.getElementById('carousel-dots-container');
+                    
+                    if (!container) return; // Guard for non-home pages if logic changes
+
+                    container.innerHTML = '';
+                    dotsContainer.innerHTML = '';
+
+                    app.state.carouselData.forEach((item, index) => {
+                        // Create Slide
+                        const slide = document.createElement('div');
+                        slide.className = 'carousel-item';
+                        slide.innerHTML = `<img src="${item.img}" alt="Visual ${index}">`;
+                        slide.onclick = () => app.carousel.goTo(index);
+                        container.appendChild(slide);
+
+                        // Create Dot
+                        const dot = document.createElement('div');
+                        dot.className = 'dot';
+                        dot.onclick = () => app.carousel.goTo(index);
+                        dotsContainer.appendChild(dot);
+                    });
+
+                    this.updateUI();
+                },
+
+                updateUI() {
+                    const slides = document.querySelectorAll('.carousel-item');
+                    const dots = document.querySelectorAll('.dot');
+                    const idx = app.state.carouselIndex;
+                    const total = app.state.carouselData.length;
+
+                    slides.forEach((slide, i) => {
+                        slide.className = 'carousel-item'; // reset
+                        // Remove inline styles to let CSS handle visibility
+                        slide.style.opacity = '';
+                        slide.style.zIndex = '';
+                        slide.style.transform = '';
+                        
+                        if (i === idx) {
+                            slide.classList.add('active');
+                        } else if (i === (idx - 1 + total) % total) {
+                            slide.classList.add('prev');
+                        } else if (i === (idx + 1) % total) {
+                            slide.classList.add('next');
+                        }
+                    });
+
+                    dots.forEach((dot, i) => {
+                        dot.classList.toggle('active', i === idx);
+                    });
+
+                    this.updateBg(idx);
+                },
+
+                updateBg(index) {
+                    const bg = document.getElementById('bg-layer');
+                    if (bg && app.state.carouselData[index]) {
+                        bg.style.backgroundImage = `url('${app.state.carouselData[index].bg}')`;
+                    }
+                },
+
+                goTo(index) {
+                    app.state.carouselIndex = index;
+                    this.updateUI();
+                    this.resetTimer();
+                },
+
+                next() {
+                    app.state.carouselIndex = (app.state.carouselIndex + 1) % app.state.carouselData.length;
+                    this.updateUI();
+                },
+
+                start() {
+                    app.state.carouselTimer = setInterval(() => this.next(), 4000);
+                },
+
+                stop() {
+                    clearInterval(app.state.carouselTimer);
+                },
+
+                resetTimer() {
+                    this.stop();
+                    this.start();
+                }
+            },
+
+            animations: {
+                observer: null,
+
+                init() {
+                    // Create Intersection Observer
+                    this.observer = new IntersectionObserver((entries) => {
+                        entries.forEach(entry => {
+                            if (entry.isIntersecting) {
+                                entry.target.classList.add('visible');
+                            }
+                        });
+                    }, { threshold: 0.1 });
+
+                    this.observe(document);
+                },
+
+                observe(context) {
+                    // Find all elements with .fade-in inside context
+                    const elements = context.querySelectorAll('.fade-in');
+                    elements.forEach(el => this.observer.observe(el));
+                }
+            }
+        };
+
+        // Start App
+        document.addEventListener('DOMContentLoaded', () => {
+            app.init();
+        });
+
+    </script>
 </body>
 </html>
