@@ -79,17 +79,6 @@ cd JujutsuKaisenFansite
 
 ---
 
-## 📸 Screenshots
-
-| **Home Carousel (3D)** | **Character Flip Cards** |
-| --- | --- |
-| *Dynamic background & 3D slider* | *Interactive profile cards* |
-|  |  |
-
-> *Note: Images shown above are assets used within the project.*
-
----
-
 ## 👤 Author
 
 **Phuriphat Hemakul**
