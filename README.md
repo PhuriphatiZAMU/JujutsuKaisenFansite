@@ -97,5 +97,3 @@ cd JujutsuKaisenFansite
 
 Disclaimer: This is a fan-made project for educational purposes only. All visual assets belong to Gege Akutami/Shueisha, MAPPA, and relevant copyright holders.
 </div>
-
-```
