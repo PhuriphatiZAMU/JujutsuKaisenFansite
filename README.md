@@ -1,10 +1,15 @@
 # 🤞 Jujutsu Kaisen Fansite | Domain Expansion
 
 ![Project Status](https://img.shields.io/badge/Status-Completed-success)
+![Type](https://img.shields.io/badge/Type-Front--End-green)
 ![Course](https://img.shields.io/badge/Course-Fullstack%20Web%20Development-blue)
 ![Tech](https://img.shields.io/badge/Tech-HTML%20%7C%20CSS%20%7C%20JS-orange)
 
-**Domain Expansion** is an immersive, responsive fansite dedicated to the anime/manga series *Jujutsu Kaisen*. This project demonstrates modern frontend web development techniques, featuring a custom **Single Page Application (SPA)** architecture built with vanilla JavaScript, 3D animations, and a sleek "Glassmorphism" UI design.
+> **🌐 Live Website:** [**Click Here to Visit**](https://phuriphatizamu.github.io/JujutsuKaisenFansite/)
+
+---
+
+**Domain Expansion** is an immersive, responsive **Front-End** fansite dedicated to the anime/manga series *Jujutsu Kaisen*. This project is purely focused on **Front-End Web Development**, demonstrating advanced UI/UX techniques without backend dependencies. It features a custom **Single Page Application (SPA)** architecture built with vanilla JavaScript, 3D animations, and a sleek "Glassmorphism" design.
 
 Developed as part of the **Fullstack Web Development** curriculum.
 
@@ -12,7 +17,7 @@ Developed as part of the **Fullstack Web Development** curriculum.
 
 ## ✨ Key Features
 
-- **⚡ Custom SPA Navigation:** A seamless browsing experience using a JavaScript-based router that updates content dynamically without page reloads.
+- **⚡ Front-End SPA Architecture:** A seamless browsing experience using a custom JavaScript-based router that updates content dynamically on the client-side without page reloads.
 - **🎨 Immersive UI/UX:**
   - **Glassmorphism Navigation:** Modern, translucent navbar with blur effects.
   - **Dynamic Backgrounds:** The background image transitions automatically based on the active carousel slide.
@@ -26,7 +31,7 @@ Developed as part of the **Fullstack Web Development** curriculum.
 
 ## 🛠️ Tech Stack
 
-This project is built using pure **Vanilla Web Technologies** to demonstrate a strong understanding of core concepts without relying on external frameworks.
+This project is built using pure **Vanilla Front-End Technologies** to demonstrate a strong understanding of core concepts without relying on external frameworks.
 
 | Technology | Usage |
 | :--- | :--- |
@@ -41,21 +46,25 @@ This project is built using pure **Vanilla Web Technologies** to demonstrate a s
 
 ```bash
 JujutsuKaisenFansite/
-├── index.html           # Main entry point (SPA Container)
-├── Photo/               # Asset Directory
-│   ├── Arc/             # Story arc thumbnails and scene galleries
-│   ├── Character/       # Character profile images (WebP)
-│   ├── Kay-Visual/      # High-res key visuals for backgrounds
-│   └── Logo/            # Site logos and favicons
-└── README.md            # Project Documentation
+├── index.html            # Main entry point (SPA Container)
+├── Photo/                # Asset Directory
+│   ├── Arc/              # Story arc thumbnails and scene galleries
+│   ├── Character/        # Character profile images (WebP)
+│   ├── Kay-Visual/       # High-res key visuals for backgrounds
+│   └── Logo/             # Site logos and favicons
+└── README.md             # Project Documentation
 
 ```
 
 ---
 
-## 🚀 How to Run
+## 🚀 How to Run locally
 
-Since this project utilizes client-side technologies, you can run it via any modern web browser or a local server.
+Since this is a static **Front-End** project, you can view the live website directly or run it locally.
+
+**View Live:** [https://phuriphatizamu.github.io/JujutsuKaisenFansite/](https://phuriphatizamu.github.io/JujutsuKaisenFansite/)
+
+**Run Locally:**
 
 1. **Clone the repository:**
 ```bash
@@ -92,8 +101,9 @@ cd JujutsuKaisenFansite
 <div align="center">
 <i>"Throughout Heaven and Earth, I alone am the honored one."</i>
 
-
-
-
 Disclaimer: This is a fan-made project for educational purposes only. All visual assets belong to Gege Akutami/Shueisha, MAPPA, and relevant copyright holders.
+
 </div>
+```
+
+```
