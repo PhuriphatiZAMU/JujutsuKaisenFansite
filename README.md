@@ -100,16 +100,16 @@ cd JujutsuKaisenFansite
 
 ### Homepage (3D Carousel)
 
-*(Place your carousel screenshot here)*
+[Photo/Page/Characters.png]
+
 
 ### Character Deck (Flip Cards)
 
-*(Place your character cards screenshot here)*
+[Photo/Page/Characters.png]
 
 ### Mobile Responsive View
 
-*(Place your mobile view screenshot here)*
-
+[Photo/Page/Mobile.png]
 ---
 
 ## 👥 Author
