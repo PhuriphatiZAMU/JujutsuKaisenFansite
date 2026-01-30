@@ -100,7 +100,7 @@ cd JujutsuKaisenFansite
 
 ### Homepage (3D Carousel)
 
-![Homepage (3D Carousel)](Photo/Page/Homepage (3D Carousel).png)
+![Homepage (3D Carousel)](Photo/Page/Home.png)
 
 
 ### Character Deck (Flip Cards)
