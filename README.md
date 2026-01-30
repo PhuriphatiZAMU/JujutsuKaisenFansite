@@ -1,7 +1,7 @@
 # 🤞 Jujutsu Kaisen Fansite | Domain Expansion
 
 > 📅 **Academic Year:** 2025\
-> 🧑‍🏫 Instructor: Dr. Chanakarn Kingkaew\
+> 🧑‍🏫 **Instructor:** Dr. Chanakarn Kingkaew\
 > 🏫 **Institution:** Panyapiwat Institute of Management (PIM)\
 > 💻 **Course:** Fullstack Web Development\
 > 🔤 **Stack:** HTML, CSS, Vanilla JavaScript
