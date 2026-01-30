@@ -4,7 +4,7 @@
 > 🧑‍🏫 Instructor: Dr. Chanakarn Kingkaew\
 > 🏫 **Institution:** Panyapiwat Institute of Management (PIM)\
 > 💻 **Course:** Fullstack Web Development\
-> 🔤 **Stack:** HTML, CSS, Vanilla JavaScript\
+> 🔤 **Stack:** HTML, CSS, Vanilla JavaScript
 
 > **🌐 Live Website:** **[Click Here to Visit Domain Expansion](https://phuriphatizamu.github.io/JujutsuKaisenFansite/)**
 
