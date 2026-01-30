@@ -1,44 +1,54 @@
 # 🤞 Jujutsu Kaisen Fansite | Domain Expansion
 
-![Project Status](https://img.shields.io/badge/Status-Completed-success)
-![Type](https://img.shields.io/badge/Type-Front--End-green)
-![Course](https://img.shields.io/badge/Course-Fullstack%20Web%20Development-blue)
-![Tech](https://img.shields.io/badge/Tech-HTML%20%7C%20CSS%20%7C%20JS-orange)
+> 📅 **Academic Year:** 2025
+> 🧑‍🏫 Instructor: Dr. Chanakarn Kingkaew
+> 🏫 **Institution:** Panyapiwat Institute of Management (PIM)
+> 💻 **Course:** Fullstack Web Development
+> 🔤 **Stack:** HTML, CSS, Vanilla JavaScript
 
-> **🌐 Live Website:** [**Click Here to Visit**](https://phuriphatizamu.github.io/JujutsuKaisenFansite/)
-
----
-
-**Domain Expansion** is an immersive, responsive **Front-End** fansite dedicated to the anime/manga series *Jujutsu Kaisen*. This project is purely focused on **Front-End Web Development**, demonstrating advanced UI/UX techniques without backend dependencies. It features a custom **Single Page Application (SPA)** architecture built with vanilla JavaScript, 3D animations, and a sleek "Glassmorphism" design.
-
-Developed as part of the **Fullstack Web Development** curriculum.
+> **🌐 Live Website:** **[Click Here to Visit Domain Expansion](https://phuriphatizamu.github.io/JujutsuKaisenFansite/)**
 
 ---
 
-## ✨ Key Features
+## 📌 Overview
 
-- **⚡ Front-End SPA Architecture:** A seamless browsing experience using a custom JavaScript-based router that updates content dynamically on the client-side without page reloads.
-- **🎨 Immersive UI/UX:**
-  - **Glassmorphism Navigation:** Modern, translucent navbar with blur effects.
-  - **Dynamic Backgrounds:** The background image transitions automatically based on the active carousel slide.
-  - **Scroll Animations:** Elements fade in and slide up smoothly using the `Intersection Observer API`.
-- **🎠 3D Interactive Carousel:** A custom-built 3D image slider on the homepage with active, previous, and next states.
-- **🃏 Character Flip Cards:** Interactive 3D cards that flip on hover to reveal character profiles and details.
-- **🎞️ Story Arc Hub:** A comprehensive gallery of story arcs (Zero, Hidden Inventory, Shibuya, etc.) with deep-dive pages containing scene galleries and direct streaming links (Netflix, Bilibili, Prime).
-- **📱 Fully Responsive:** Optimized layout for Desktop, Tablet, and Mobile devices with a custom hamburger menu.
+**Domain Expansion** is an immersive, responsive **Front-End Fansite** dedicated to the anime/manga series *Jujutsu Kaisen*. This project demonstrates advanced **UI/UX techniques** and **Single Page Application (SPA)** architecture built entirely with **Vanilla JavaScript**, removing the need for backend dependencies.
+
+The project features:
+
+* A custom **Client-Side Router** for seamless navigation.
+* **Glassmorphism Design** for a modern, aesthetic feel.
+* **3D Interactive Elements** like carousels and flip cards.
+* **Responsive Layout** optimized for all devices.
 
 ---
 
-## 🛠️ Tech Stack
+## 🛠️ Features
 
-This project is built using pure **Vanilla Front-End Technologies** to demonstrate a strong understanding of core concepts without relying on external frameworks.
+* ⚡ **SPA Architecture**: Updates content dynamically without page reloads using custom JavaScript routing.
+* 🎨 **Glassmorphism UI**: Translucent navigation and container elements with blur effects.
+* 🔄 **Dynamic Backgrounds**: Background changes automatically based on the active slide in the carousel.
+* 🎠 **3D Carousel**: Custom-built image slider with active, previous, and next state transitions.
+* 🃏 **Character Flip Cards**: Interactive 3D cards that reveal profiles and stats on hover.
+* 🎞️ **Story Arc Hub**: Detailed galleries for arcs (Zero, Hidden Inventory, Shibuya) with streaming links.
+* 📱 **Fully Responsive**: Optimized for Desktop, Tablet, and Mobile with hamburger menu support.
+* 🎬 **Scroll Animations**: Smooth fade-in and slide-up effects using `Intersection Observer API`.
 
-| Technology | Usage |
-| :--- | :--- |
-| ![HTML5](https://img.shields.io/badge/HTML5-E34F26?style=for-the-badge&logo=html5&logoColor=white) | Semantic markup and structure. |
-| ![CSS3](https://img.shields.io/badge/CSS3-1572B6?style=for-the-badge&logo=css3&logoColor=white) | Custom variables (`:root`), Flexbox, Grid, 3D Transforms, and Media Queries. |
-| ![JavaScript](https://img.shields.io/badge/JavaScript-F7DF1E?style=for-the-badge&logo=javascript&logoColor=black) | DOM Manipulation, Routing Logic, Carousel State Management, and Event Handling. |
-| **Google Fonts** | Typography using the **'Prompt'** font family. |
+---
+
+## 🎯 System Design & Tech Stack
+
+### **Core Technologies**
+
+* **HTML5**: Semantic markup and structural hierarchy.
+* **CSS3**: Custom variables (`:root`), Flexbox, Grid, 3D Transforms, and Glassmorphism effects.
+* **JavaScript (Vanilla)**: DOM Manipulation, Routing Logic, State Management, and Event Handling.
+
+### **Architecture Highlights**
+
+* **Routing**: `History API` based routing to handle URL changes without refreshing.
+* **Asset Management**: Organized directory structure for high-res visuals (`Photo/Kay-Visual`) and optimized thumbnails.
+* **Typography**: Integrated **'Prompt'** font family via Google Fonts for Thai/English consistency.
 
 ---
 
@@ -47,8 +57,10 @@ This project is built using pure **Vanilla Front-End Technologies** to demonstra
 ```bash
 JujutsuKaisenFansite/
 ├── index.html            # Main entry point (SPA Container)
+├── script.js             # Core logic & Router
+├── style.css             # Main stylesheet
 ├── Photo/                # Asset Directory
-│   ├── Arc/              # Story arc thumbnails and scene galleries
+│   ├── Arc/              # Story arc thumbnails & galleries
 │   ├── Character/        # Character profile images (WebP)
 │   ├── Kay-Visual/       # High-res key visuals for backgrounds
 │   └── Logo/             # Site logos and favicons
@@ -58,49 +70,61 @@ JujutsuKaisenFansite/
 
 ---
 
-## 🚀 How to Run locally
+## 🚀 How to Run Locally
 
-Since this is a static **Front-End** project, you can view the live website directly or run it locally.
+Since this is a static **Front-End** project, you can run it without complex environment setups.
 
-**View Live:** [https://phuriphatizamu.github.io/JujutsuKaisenFansite/](https://phuriphatizamu.github.io/JujutsuKaisenFansite/)
-
-**Run Locally:**
-
-1. **Clone the repository:**
+1. **Clone the repository**
 ```bash
-git clone [https://github.com/PhuriphatiZAMU/JujutsuKaisenFansite.git](https://github.com/PhuriphatiZAMU/JujutsuKaisenFansite.git)
+git clone https://github.com/PhuriphatiZAMU/JujutsuKaisenFansite.git
 
 ```
 
 
-2. **Navigate to the folder:**
+2. **Navigate to the folder**
 ```bash
 cd JujutsuKaisenFansite
 
 ```
 
 
-3. **Launch:**
-* **Recommended:** Open with **Live Server** (VS Code Extension) to ensure all assets load correctly.
-* **Alternative:** Simply double-click `index.html` to open it in Chrome, Edge, or Firefox.
+3. **Launch the Application**
+* **Recommended:** Open with **Live Server** (VS Code Extension) to ensure assets and routing load correctly.
+* **Alternative:** Open `index.html` directly in Chrome, Edge, or Firefox.
 
 
 
 ---
 
-## 👤 Author
+## 📸 Screenshots
 
-**Phuriphat Hemakul**
+### Homepage (3D Carousel)
 
-* **GitHub:** [@PhuriphatiZAMU](https://github.com/PhuriphatiZAMU)
-* **Email:** [phuriphathem@gmail.com](mailto:phuriphathem@gmail.com)
-* **Faculty:** Engineering and Technology, PIM.
+*(Place your carousel screenshot here)*
+
+### Character Deck (Flip Cards)
+
+*(Place your character cards screenshot here)*
+
+### Mobile Responsive View
+
+*(Place your mobile view screenshot here)*
 
 ---
 
-<div align="center">
-<i>"Throughout Heaven and Earth, I alone am the honored one."</i>
+## 👥 Author
 
-Disclaimer: This is a fan-made project for educational purposes only. All visual assets belong to Gege Akutami/Shueisha, MAPPA, and relevant copyright holders.
+* **Phuriphat Hemakul** ([@PhuriphatiZAMU](https://github.com/PhuriphatiZAMU))
+* **Faculty:** Engineering and Technology, PIM
 
-</div>
+---
+
+## 📜 Disclaimer
+
+This project is intended for **educational purposes only**.
+
+> *"Throughout Heaven and Earth, I alone am the honored one."*
+
+All visual assets belong to **Gege Akutami/Shueisha**, **MAPPA**, and relevant copyright holders.
+
+> ⭐ If you like this project, feel free to **star** the repository!
